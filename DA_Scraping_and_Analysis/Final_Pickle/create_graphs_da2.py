@@ -60,6 +60,14 @@ y_list = list(dict_da_1_final.keys())
 
 x_list = [i*3 for i in x_list]
 y_list = [i.capitalize() for i in y_list]
+
+y_list = ['Statistics' if i == 'Stat' else i for i in y_list]
+y_list = ['SQL' if i == 'Sql' else i for i in y_list]
+y_list = ['ETL' if i == 'Etl' else i for i in y_list]
+y_list = ['ML' if i == 'Machine learning' else i for i in y_list]
+y_list = ['DL' if i == 'Deep learning' else i for i in y_list]
+
+
 percent = [str(int((i/9200) * 100))+"%" for i in x_list]
 fig2 = go.Figure(go.Bar(
     x=x_list,
@@ -94,7 +102,7 @@ def figures_to_html(figs, filename="data_analyst2.html"):
     dashboard2.write("<html><head></head><body>" + "\n")
     for fig in figs:
         dashboard2.write(
-            '<h2 style="text-align: center">Top 10 skills for data analyst for experience of 2-5 years in 2021 April</h2>')
+            '<h2 style="text-align: center">Top 10 skills for data analyst for experience of 2-5 years in 2021</h2>')
         inner_html = fig.to_html().split('<body>')[1].split('</body>')[0]
         dashboard2.write(inner_html)
     dashboard2.write("</body></html>")
